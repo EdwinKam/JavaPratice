@@ -4,6 +4,7 @@ import java.awt.*;//pointer
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -99,6 +100,11 @@ public class Main {
         //i2= scanner.nextLine() ;//this one wouldnt;
         //i2 = scanner.nextLine().trim()//this one can get rid of the extra spacing
 
+
+        int[] array = new int[5];
+        System.out.println(array.length);
+        Random r = new Random();
+        System.out.println(r.nextInt(array.length));
 
 
 

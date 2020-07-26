@@ -19,6 +19,13 @@ public class NestedLoop {
             System.out.println(fancycolor[i][j]);
         }}
 
+        for (int i = 0; i<3000000; i++){
+
+                System.out.println(i);
+            }
+
+
+
 
     }
 }
