@@ -1,0 +1,3 @@
+https://openjfx.io/openjfx-docs/
+right click src-open module setting-Libraries->  + then selete sdk's lib
+run-edit config- vm setting
