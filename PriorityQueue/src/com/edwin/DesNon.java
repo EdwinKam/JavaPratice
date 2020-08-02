@@ -11,7 +11,8 @@ public class DesNon {
 			@Override
 			public int compare(Double o1, Double o2) {
 				return o2.compareTo(o1);
-			}
+			} //look at the order of o2, o1
+			//this is for descending orders
 		});
 		for (double v : arr) {
 			q.offer(v);//plug arr value into priority queue

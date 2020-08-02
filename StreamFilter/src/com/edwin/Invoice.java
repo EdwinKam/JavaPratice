@@ -71,11 +71,24 @@ public class Invoice
 	}
 
 	// return String representation of Invoice object
+
+	public String displayPartNum(){
+		return "Part #: "+ Integer.toString(partNumber);
+	}
+
+	public String displayPartDes(){
+		return "Description: "+ partDescription;
+	}
+
+	public String displayPrice(){
+		return String.format("Price: $%6.2f",pricePerItem);
+	}
+	public String displayQua(){
+		return "Quantity: "+ quantity;
+	}
 	public String toString()
 	{
-		return String.format("%s: %s: %-2d (%-15s) %s: %-2d %s: $%,.2f",
-				"invoice", "part number", getPartNumber(), getPartDescription(),
-				"quantity", getQuantity(), "price per item", getPricePerItem());
+		return String.format("%-13s%-30s%-15s%s",displayPartNum(),displayPartDes(),displayQua(),displayPrice());
 	}
 
 	// method required to carry out contract with interface Payable
