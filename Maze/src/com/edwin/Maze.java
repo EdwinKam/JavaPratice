@@ -36,7 +36,7 @@ public class Maze {
                 }else{
                     System.out.println("88");       //false then no way to get out
                 }
-                input();
+                input();        //if that maze cant get out, will ask for input again
                 break;
             case 2:
                 System.out.println("Genarating 10 maze");

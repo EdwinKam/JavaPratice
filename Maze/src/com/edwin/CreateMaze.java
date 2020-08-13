@@ -3,7 +3,7 @@ package com.edwin;
 import java.util.*;
 
 public class CreateMaze {
-	private int a,b, vin, hin, vout, hout,vp,hp;
+	private int a,b, vin, hin, vout, hout;
 	Random r = new Random();
 	private char[][] array;//declare array
 	Scanner s = new Scanner(System.in);
@@ -11,12 +11,12 @@ public class CreateMaze {
 	CreateMaze(){
 		a = r.nextInt(26)+5;
 		b = r.nextInt(26)+5;
-		array= new char[a][b];
+		array= new char[a][b];      //random array size from 5-30
 		setUp();
 
 	}
 	CreateMaze(int one, int two){
-		a = one;
+		a = one;        //take user input and declare array
 		b = two;
 		array= new char[a][b];
 		setUp();
@@ -32,59 +32,41 @@ public class CreateMaze {
 	public boolean traverseMaze(int v, int h){
 
 		if(reachEnd(v,h)){
-			array[v][h] ='x';
+			array[v][h] ='x';   //if escape the maze
 			return true;
 		}else if (deadEnd(v,h)){
-			//System.out.println("??");
-			return false;
+			return false;       //if reach dead end
 		}
 		else{
 			String user;
 				do{
 					System.out.print("y to continue");
-					user=s.next();
+					user=s.next();  //ask user for input
 				}while(user!="n"&&user=="y");
 				if (user=="n"){
-					System.exit(0);
+					System.exit(0);     //if n then exit system
 				}
-				array[v][h] ='x';
-				System.out.println(printA());
+				array[v][h] ='x';       //step x when enter this [v][h]
+				System.out.println(printA());       //print the maze after step
 				if(v+1<a&&traverseMaze(v+1,h)){
-					//array[v][h] ='x';
-					//array[v + 1][h] = 'x';
-					return true;
-				}else if(array[v+1][h]=='x') {
-					//array[v + 1][h] = '.';
-					//array[v][h] ='x';
+					return true;        //go down
 				}
 				if(h+1<b&&traverseMaze(v,h+1)){
-					//array[v][h+1]='x';
-					return true;
-				}else if (array[v][h+1]=='x'){
-					//array[v][h+1]='.';
-					//array[v][h] ='x';
+					return true;        //go right
 				}
 				if(v-1>=0&&traverseMaze(v-1,h)){
-					//array[v - 1][h] = 'x';
-					return true;
-				}else if(v-1>=0&&array[v-1][h]=='x') {
-					//array[v - 1][h] = '.';
-					//array[v][h] ='x';
+					return true;        //go up
 				}
 				if(h-1>=0&&traverseMaze(v,h-1)){
-					//array[v][h - 1] = 'x';
-					return true;
-				}else if(h-1>=0&&array[v][h-1]=='x') {
-					//array[v][h - 1] = '.';
-					//array[v][h] ='x';
+					return true;        //go left
 				}
-				array[v][h] = '.';
-				return false;
+				array[v][h] = '.';      //otherwise, if all way is invalid, then [v][h] change to .
+				return false;       //and return false, it means this block 4 ways all invalid
 
 		}
 	}
 
-	public boolean autoMaze(int v, int h){
+	public boolean autoMaze(int v, int h){ //this method same as the above, but no need user input 'y'
 
 		if(reachEnd(v,h)){
 			array[v][h] ='x';
@@ -97,19 +79,15 @@ public class CreateMaze {
 
 			if(v+1<a&&autoMaze(v+1,h)){
 				return true;
-			}else if(array[v+1][h]=='x') {
 			}
 			if(h+1<b&&autoMaze(v,h+1)){
 				return true;
-			}else if (array[v][h+1]=='x'){
 			}
 			if(v-1>=0&&autoMaze(v-1,h)){
 				return true;
-			}else if(v-1>=0&&array[v-1][h]=='x') {
 			}
 			if(h-1>=0&&autoMaze(v,h-1)){
 				return true;
-			}else if(h-1>=0&&array[v][h-1]=='x') {
 			}
 			return false;
 
@@ -117,10 +95,10 @@ public class CreateMaze {
 	}
 	//set the maze boundary to all #
 	private boolean deadEnd(int v, int h) {
-		return (array[v][h]=='#'||array[v][h]=='x');
+		return (array[v][h]=='#'||array[v][h]=='x');        //check if its dead end
 	}
 	private boolean reachEnd(int v, int h){
-		return (v==vout&&h==hout);
+		return (v==vout&&h==hout);      //check if its exit
 	}
 	private void setUpBound(){
 		for (int i=0;i<a;i++){  //set whole array to .
@@ -129,7 +107,7 @@ public class CreateMaze {
 		}
 		for (int i =0; i<a;i++){
 			array[i][0]='#';
-			array[i][b-1]='#';
+			array[i][b-1]='#';      //4 wall to '#'
 		}
 		for (int i =0; i<b;i++){
 			array[0][i]='#';
@@ -189,16 +167,8 @@ public class CreateMaze {
 		return vin;
 	}
 
-	public int getVout() {
-		return vout;
-	}
-
 	public int getHin() {
 		return hin;
-	}
-
-	public int getHout() {
-		return hout;
 	}
 
 	public String toString() {

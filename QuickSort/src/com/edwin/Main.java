@@ -1,48 +1,41 @@
 package com.edwin;
 
+import javax.xml.xpath.XPathEvaluationResult;
 import java.util.Arrays;
 
 public class Main {
-    public static int  [] array = {5,2,7,1,84,8,3,7,34,6,4,6,7,3,3,0,3,4,};
-    public static int left =0,right =array.length;
+    //public static int left =0,right =array.length;
     public static void main(String[] args) {
 	// write your code here
+        QuickSort q1 = new QuickSort("array1");
+        q1.sort(0,q1.getSize()-1);//mine
+        System.out.println("sort method called.");
+        System.out.println(q1);
+        Arrays.sort(q1.getArr());//lib
+        System.out.println(q1);
 
-        System.out.println(Arrays.toString(array));
-        sort(array);
-        System.out.println(Arrays.toString(array));
+        QuickSort q2 = new QuickSort("array2");
+        q2.sort(0,q2.getSize()-1);
+        System.out.println("sort method called.");
+        System.out.println(q2);
+        Arrays.sort(q2.getArr());
+        System.out.println(q2);
 
-    }
-    public static void sort(int [] arr){
-        int intright=right;
-        for(int i= right-1; i>left; i--){     //check from right
-            if (arr[left]>arr[i]){
-                int temp = arr[left];       //until less than left is found
-                arr[left]=arr[i];
-                arr[i]=temp;
-                right = i;
-                break;
-            }
-        }
-        if(intright==right){    //if nothing int the right smaller than right
-           // left=right+1;
-        }
-        int intleft=left;
-        for(int i = left+1; i<right;i++ ){      //check from left
-            if (arr[i]>arr[right]){
-                int temp = arr[i];
-                arr[i]=arr[right];          //until greater than right is found
-                arr[right]=temp;
-                left = i;
-                break;
-            }
-        }
-        if(intleft==left){
-            System.out.println(right);
-            System.out.println(left);
-            return;
-        }
-        sort(arr);
+        QuickSort q3 = new QuickSort("array3");
+        q3.sort(0,q3.getSize()-1);
+        System.out.println("sort method called.");
+        System.out.println(q3);
+        Arrays.sort(q3.getArr());
+        System.out.println(q3);
+
+        QuickSort q4 = new QuickSort("array4");
+        q4.sort(0,q4.getSize()-1);
+        System.out.println("sort method called.");
+        System.out.println(q4);
+        Arrays.sort(q4.getArr());
+        System.out.println(q4);
 
     }
+
+
 }
