@@ -19,7 +19,8 @@ public class Main {
 }
 class CreateReadFile{
     private Formatter x;
-
+    CreateReadFile(String filename){openFile(filename);}
+    CreateReadFile(){}
     public void openFile(String filename){//create file
         try{
             x= new Formatter(filename);
